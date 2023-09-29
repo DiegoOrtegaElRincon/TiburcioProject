@@ -23,6 +23,26 @@ export class MyBicyclesPage implements OnInit {
     });
   }
 
+  postBicycle(model:string, year: string){
+    let bicycle = {
+      model:model,
+      year:year
+    }
+    this.bicycleService.postBicycles(bicycle).subscribe(response =>{
+      this.bicycles=response
+      this.getAllBicycles()
+    })
+  }
+
+  deleteBicycle(id:string){
+    this.bicycleService.deleteBicycle(id).subscribe(response =>{
+      this.bicycles=response
+      this.getAllBicycles()
+    })
+  }
+
+
+
   gotoHome(){
     this.router.navigateByUrl("/home")
   }
