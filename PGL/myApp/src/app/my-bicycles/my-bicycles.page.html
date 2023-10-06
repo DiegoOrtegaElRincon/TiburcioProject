@@ -18,9 +18,8 @@
         <h1>{{b.model}}</h1>
         <p>{{b.year}}</p>
       </ion-label>
-      <ion-button (click)="deleteBicycle(b.id)">DELETE</ion-button>
-      <ion-button expand="block" (click)="gotoHome()">Delete</ion-button>
-      <ion-button expand="block" (click)="gotoHome()">Update</ion-button>
+      <ion-button expand="block" (click)="deleteBicycle(b.id)">Delete</ion-button>
+      <ion-button expand="block" (click)="updateBicycle(b.id)">Update</ion-button>
     </ion-item>
   </ion-list>
 

@@ -23,17 +23,17 @@ export class MyBicyclesPage implements OnInit {
     });
   }
 
+  insertBicycle() {
+    this.router.navigateByUrl("/add-bicycle");
+  }
+
   deleteBicycle(id: number) {
     this.bicycleService.deleteBicycle(id).subscribe(() => {
       this.getAllBicycles();
     })
   }
 
-  insertBicycle(){
-    this.router.navigateByUrl("/add-bicycle");
-  }
-
-  updateBicycle(id: number){
+  updateBicycle(id: number) {
     this.bicycleService.setCurrentBicycleId(id);
     this.router.navigateByUrl("/update-bicycle");
   }
