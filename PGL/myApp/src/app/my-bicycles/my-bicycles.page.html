@@ -15,10 +15,12 @@
   <ion-list>
     <ion-item *ngFor = "let b of bicycles">
       <ion-label>
-        <h1>{{b.brand}}</h1>
-        <p>{{b.model}}</p>
+        <h1>{{b.model}}</h1>
+        <p>{{b.year}}</p>
       </ion-label>
       <ion-button (click)="deleteBicycle(b.id)">DELETE</ion-button>
+      <ion-button expand="block" (click)="gotoHome()">Delete</ion-button>
+      <ion-button expand="block" (click)="gotoHome()">Update</ion-button>
     </ion-item>
   </ion-list>
 

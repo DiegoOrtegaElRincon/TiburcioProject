@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'my-bicycles',
     loadChildren: () => import('./my-bicycles/my-bicycles.module').then( m => m.MyBicyclesPageModule)
   },
+  {
+    path: 'add-bicycle',
+    loadChildren: () => import('./add-bicycle/add-bicycle.module').then( m => m.AddBicyclePageModule)
+  },
 ];
 
 @NgModule({
