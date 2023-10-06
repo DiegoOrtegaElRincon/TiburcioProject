@@ -34,8 +34,8 @@ export class MyBicyclesPage implements OnInit {
   }
 
   updateBicycle(id: number) {
-    this.bicycleService.setCurrentBicycleId(id);
-    this.router.navigateByUrl("/update-bicycle");
+    this.bicycleService.currentBicycleId = id;
+    this.router.navigate(["/update-bicycle", id]);
   }
 
   gotoHome() {

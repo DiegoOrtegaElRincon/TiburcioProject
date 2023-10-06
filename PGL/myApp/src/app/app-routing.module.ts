@@ -19,6 +19,11 @@ const routes: Routes = [
     path: 'add-bicycle',
     loadChildren: () => import('./add-bicycle/add-bicycle.module').then( m => m.AddBicyclePageModule)
   },
+  {
+    path: 'update-bicycle/:id',
+    loadChildren: () => import('./update-bicycle/update-bicycle.module').then( m => m.UpdateBicyclePageModule)
+  },
+
 ];
 
 @NgModule({

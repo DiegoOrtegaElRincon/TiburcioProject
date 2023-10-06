@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BicycleService } from '../services/bicycle.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-bicycle',
-  templateUrl: './add-bicycle.page.html',
-  styleUrls: ['./add-bicycle.page.scss'],
+  selector: 'app-update-bicycle',
+  templateUrl: './update-bicycle.page.html',
+  styleUrls: ['./update-bicycle.page.scss'],
 })
-export class AddBicyclePage {
 
-  bicycleForm: FormGroup;
+
+export class UpdateBicyclePage {
+
+  bicycleUpdateForm: FormGroup;
 
   constructor(private router: Router, private bicycleService: BicycleService, public formBuilder: FormBuilder) {
-    this.bicycleForm = this.formBuilder.group({
+    this.bicycleUpdateForm = this.formBuilder.group({
       model: ['', [Validators.required, Validators.minLength(3)]],
       year: [
         '',
@@ -27,20 +29,16 @@ export class AddBicyclePage {
     })
   }
 
-
-  ngOninit() {
-  }
-
   get errorControl() {
-    return this.bicycleForm.controls;
+    return this.bicycleUpdateForm.controls;
   }
-
-  submitForm() {
-    if (this.bicycleForm.valid) {
-      const model = this.bicycleForm.value.model;
-      const year = this.bicycleForm.value.year;
-
-      this.bicycleService.addBicycles({ model, year }).subscribe((response) => {
+  
+  updateForm() {
+    if (this.bicycleUpdateForm.valid) {
+      const model = this.bicycleUpdateForm.value.model;
+      const year = this.bicycleUpdateForm.value.year;
+      const id = this.bicycleService.getCurrentBicycleId()
+      this.bicycleService.updateBicycles(id, { model, year }).subscribe((response) => {
         this.router.navigateByUrl("/my-bicycles");
       });
     }
@@ -49,4 +47,5 @@ export class AddBicyclePage {
   gotoHome() {
     this.router.navigateByUrl("/")
   }
+
 }
