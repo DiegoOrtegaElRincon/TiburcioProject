@@ -10,11 +10,25 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class BicycleService {
+
+  currentBicycleId!: number;
 
   endpoint = "http://localhost:8080/bicycles";
 
+
   constructor(private httpClient: HttpClient) { }
+
+  setCurrentBicycleId(id: number){
+    this.currentBicycleId = id;
+  }
+
+  getCurrentBicycleId(): number {
+    return this.currentBicycleId;
+  }
 
   getBicycles() {
     return this.httpClient.get(this.endpoint);
@@ -27,7 +41,7 @@ export class BicycleService {
   addBicycles(bicycle: any) {
     let bodyEncoded = new URLSearchParams();
     bodyEncoded.append("model", bicycle.model);
-    bodyEncoded.append("brand", bicycle.brand);
+    bodyEncoded.append("year", bicycle.year);
     let body = bodyEncoded.toString();
 
     return this.httpClient.post(this.endpoint, body, httpOptions);
@@ -40,7 +54,7 @@ export class BicycleService {
   updateBicycles(id:number, bicycle: any) {
     let bodyEncoded = new URLSearchParams();
     bodyEncoded.append("model", bicycle.model);
-    bodyEncoded.append("brand", bicycle.brand);
+    bodyEncoded.append("year", bicycle.year);
     let body = bodyEncoded.toString();
 
     return this.httpClient.post(this.endpoint+`/${id}`, body, httpOptions);

@@ -11,19 +11,34 @@ export class MyBicyclesPage implements OnInit {
 
   bicycles: any = []
 
-  constructor(private router: Router, private bicycleService: BicycleService) {}
+  constructor(private router: Router, private bicycleService: BicycleService) { }
 
   ngOnInit() {
     this.getAllBicycles();
   }
 
-  getAllBicycles(){
+  getAllBicycles() {
     this.bicycleService.getBicycles().subscribe(response => {
       this.bicycles = response;
     });
   }
 
-  gotoHome(){
+  deleteBicycle(id: number) {
+    this.bicycleService.deleteBicycle(id).subscribe(() => {
+      this.getAllBicycles();
+    })
+  }
+
+  insertBicycle(){
+    this.router.navigateByUrl("/add-bicycle");
+  }
+
+  updateBicycle(id: number){
+    this.bicycleService.setCurrentBicycleId(id);
+    this.router.navigateByUrl("/update-bicycle");
+  }
+
+  gotoHome() {
     this.router.navigateByUrl("/home")
   }
 

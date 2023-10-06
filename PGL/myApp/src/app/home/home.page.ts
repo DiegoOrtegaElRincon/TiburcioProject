@@ -18,4 +18,8 @@ export class HomePage {
     this.router.navigateByUrl("/my-bicycles")
   }
 
+  gotoAddBicycles(){
+    this.router.navigateByUrl("/add-bicycle")
+  }
+
 }
