@@ -56,8 +56,8 @@ export class BicycleService {
     bodyEncoded.append("model", bicycle.model);
     bodyEncoded.append("year", bicycle.year);
     let body = bodyEncoded.toString();
-
-    return this.httpClient.post(this.endpoint+`/${id}`, body, httpOptions);
+    
+    return this.httpClient.put(this.endpoint+`/${id}`, body, httpOptions);
   }
 
 }
